@@ -2,7 +2,6 @@ import random
 
 from validation import validate_number
 
-
 def practice_table(min, max):
     num1 = random.randint(min, max)
     num2 = random.randint(min, max)
@@ -13,3 +12,6 @@ def practice_table(min, max):
         print("Correct!")
     else:
         print(f"Sorry, the correct answer was {answer}")
+
+def practice_addition_and_subtraction(zeros):
+    pass

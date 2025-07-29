@@ -20,7 +20,6 @@ match choice:
         max_val = validate_number(
             input("What's the maximum number for the tables?\n\n")
         )
-
         practice_function = lambda: practice_table(min_val, max_val)
         practice_for_duration(duration, practice_function)
     case 2:
