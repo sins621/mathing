@@ -1,4 +1,4 @@
-def choice_is_number(value: any) -> bool:
+def choice_is_number(value) -> bool:
     try:
         value = int(value)
         return True
