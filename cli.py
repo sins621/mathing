@@ -1,6 +1,5 @@
 from my_math import practice_table
 from my_time import practice_for_duration
-
 from validation import validate_number
 
 choice = validate_number(
@@ -9,11 +8,10 @@ choice = validate_number(
     )
 )
 
+duration = validate_number(input("How long would you like to practice for?\n\n"))
+
 match choice:
     case 1:
-        duration = validate_number(
-            input("How long would you like to practice for?\n\n")
-        )
         min_val = validate_number(
             input("What's the minimum number for the tables?\n\n")
         )
