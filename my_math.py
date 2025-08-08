@@ -22,21 +22,19 @@ def practice_table(min, max):
 
 
 def practice_addition_and_subtraction(num_digits):
-    # num1 = random.randint(1, 10 * 10 * num_digits)
-    # num2 = random.randint(1, 10 * 10 * num_digits)
-    num1 = 44
-    num2 = 67
-    print(f"{num1} + {num2}")
-
-    if is_fives_candidate(num1, num2):
-        num1_ten = (num1 // 10) * 10 + 5
-        num2_ten = (num2 // 10) * 10 + 5
-        remainder = num1 % 10 - 5 + num2 % 10 - 5
-        print(num1_ten, num2_ten, remainder)
-
-        user_answer = validate_number(
-            input("Fives: a5 + b5 + c.\nEnter your solution comma seperated\n")
-        )
+    num1 = random.randint(1, 10 * 10 * num_digits)
+    num2 = random.randint(1, 10 * 10 * num_digits)
+    practice_routines = [practice_fives]
+    routine_to_execute = lambda: random.choice(practice_routines)(num1, num2)
+    routine_to_execute()
 
 
-practice_addition_and_subtraction(2)
+def practice_fives(num1, num2):
+    num1_ten = (num1 // 10) * 10 + 5
+    num2_ten = (num2 // 10) * 10 + 5
+    remainder = num1 % 10 - 5 + num2 % 10 - 5
+    print(num1_ten, num2_ten, remainder)
+
+    _ = validate_number(
+        input("Fives: a5 + b5 + c.\nEnter your solution comma seperated\n")
+    )
