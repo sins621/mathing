@@ -1,4 +1,4 @@
-from my_math import practice_table
+from my_math import practice_addition_and_subtraction, practice_table
 from my_time import practice_for_duration
 from validation import validate_number
 
@@ -21,7 +21,11 @@ match choice:
         practice_function = lambda: practice_table(min_val, max_val)
         practice_for_duration(duration, practice_function)
     case 2:
-        pass
+        n_digits = validate_number(
+            input("How many digits large should the number be?\n\n")
+        )
+        practice_function = lambda: practice_addition_and_subtraction(n_digits)
+        practice_for_duration(duration, practice_function)
     case _:
         pass
 
