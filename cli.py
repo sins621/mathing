@@ -10,6 +10,7 @@ choice = validate_number(
 
 duration = validate_number(input("How long would you like to practice for?\n\n"))
 
+
 match choice:
     case 1:
         min_val = validate_number(

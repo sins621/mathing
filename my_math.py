@@ -20,6 +20,7 @@ def practice_table(min, max):
     else:
         print(f"Sorry, the correct answer was {answer}")
 
+
 def practice_addition_and_subtraction(num_digits):
     num1 = random.randint(1, 10 * 10 * num_digits)
     num2 = random.randint(1, 10 * 10 * num_digits)
