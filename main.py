@@ -6,11 +6,11 @@ flow. This keeps responsibilities clean and demonstrates MVC in practice.
 """
 
 from app.controllers.practice_controller import PracticeController
-from app.views.console_view import ConsoleView
+from app.views.tui_view import TUIView
 
 
 def main() -> None:
-    controller = PracticeController(view=ConsoleView())
+    controller = PracticeController(view=TUIView())
     controller.run()
 
 
