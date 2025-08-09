@@ -10,15 +10,16 @@ class BaseModel(Model):
         database = db
 
 
-class PracticeSession(BaseModel):
-    id = AutoField(PrimaryKeyField)
-    date = DateTimeField(datetime)
-
-
 class PracticeRegime(BaseModel):
-    id = AutoField(PrimaryKeyField)
+    id = AutoField()
+    regime_name = TextField()
 
 
-db.connect()
-db.create_tables([PracticeSession, PracticeRegime])
-db.close()
+class PracticeSession(BaseModel):
+    id = AutoField()
+    date = DateTimeField(default=datetime.now)
+    practice_start = TimeField()
+    practice_end = TimeField()
+    total_questions = IntegerField()
+    total_correct = IntegerField()
+    regime = ForeignKeyField(PracticeRegime, backref="regime")
