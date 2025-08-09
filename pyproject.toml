@@ -7,4 +7,5 @@ requires-python = ">=3.12"
 dependencies = [
     "black>=25.1.0",
     "npyscreen>=4.10.5",
+    "peewee>=3.18.2",
 ]
