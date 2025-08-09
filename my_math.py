@@ -17,8 +17,10 @@ def practice_table(min, max):
     user_answer = validate_number(input(f"What is {num1} * {num2}?\n\n"))
     if user_answer == answer:
         print("Correct!")
+        return True
     else:
         print(f"Sorry, the correct answer was {answer}")
+        return False
 
 
 def practice_addition_and_subtraction(num_digits):
@@ -26,7 +28,7 @@ def practice_addition_and_subtraction(num_digits):
     num2 = random.randint(1, 10 * 10 * num_digits)
     practice_routines = [practice_fives]
     routine_to_execute = lambda: random.choice(practice_routines)(num1, num2)
-    routine_to_execute()
+    return routine_to_execute()
 
 
 def practice_fives(num1, num2):
