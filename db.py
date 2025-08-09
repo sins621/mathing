@@ -1,25 +1,22 @@
-from datetime import datetime
+"""Deprecated: moved to `app.models.db` in the MVC refactor.
 
-from peewee import *  # pyright: ignore
+This file remains as a compatibility shim to avoid breaking old imports. Prefer
+importing from `app.models.db` directly in new code.
+"""
+from app.models.db import (  # re-export for backward compatibility
+    BaseModel,
+    PracticeRegime,
+    PracticeSession,
+    db,
+    initialize_db,
+    shutdown_db,
+)
 
-db = SqliteDatabase("mental_math.db")
-
-
-class BaseModel(Model):
-    class Meta:
-        database = db
-
-
-class PracticeRegime(BaseModel):
-    id = AutoField()
-    regime_name = TextField()
-
-
-class PracticeSession(BaseModel):
-    id = AutoField()
-    date = DateTimeField(default=datetime.now)
-    practice_start = TimeField()
-    practice_end = TimeField()
-    total_questions = IntegerField()
-    total_correct = IntegerField()
-    regime = ForeignKeyField(PracticeRegime, backref="regime")
+__all__ = [
+    "BaseModel",
+    "PracticeRegime",
+    "PracticeSession",
+    "db",
+    "initialize_db",
+    "shutdown_db",
+]

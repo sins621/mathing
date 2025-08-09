@@ -1,42 +1,27 @@
-import random
+"""Deprecated: moved into services/views in MVC refactor.
 
-from validation import validate_number
+Legacy interactive functions have been restructured as:
+- Question generation -> `app.services.exercise_service`
+- Asking/validating answers -> `app.views.console_view` (or TUI)
+"""
 
+from app.services.exercise_service import (
+    generate_add_or_subtract_question,
+    generate_times_table_question,
+)
 
-def is_fives_candidate(num1, num2):
-    return (
-        abs(num1 % 10 - 5) < 3 and abs(num2 % 10 - 5) < 3 and num1 % 10 + num2 % 10 > 10
-    )
-
-
-def practice_table(min, max):
-    num1 = random.randint(min, max)
-    num2 = random.randint(min, max)
-
-    answer = num1 * num2
-    user_answer = validate_number(input(f"What is {num1} * {num2}?\n\n"))
-    if user_answer == answer:
-        print("Correct!")
-        return True
-    else:
-        print(f"Sorry, the correct answer was {answer}")
-        return False
+# Thin compatibility wrappers for old call sites. Prefer using the controller.
 
 
-def practice_addition_and_subtraction(num_digits):
-    num1 = random.randint(1, 10 * 10 * num_digits)
-    num2 = random.randint(1, 10 * 10 * num_digits)
-    practice_routines = [practice_fives]
-    routine_to_execute = lambda: random.choice(practice_routines)(num1, num2)
-    return routine_to_execute()
+def practice_table(min_value: int, max_value: int) -> bool:
+    from app.views.console_view import ConsoleView
+
+    view = ConsoleView()
+    return view.ask_question(generate_times_table_question(min_value, max_value))
 
 
-def practice_fives(num1, num2):
-    num1_ten = (num1 // 10) * 10 + 5
-    num2_ten = (num2 // 10) * 10 + 5
-    remainder = num1 % 10 - 5 + num2 % 10 - 5
-    print(num1_ten, num2_ten, remainder)
+def practice_addition_and_subtraction(num_digits: int) -> bool:
+    from app.views.console_view import ConsoleView
 
-    _ = validate_number(
-        input("Fives: a5 + b5 + c.\nEnter your solution comma seperated\n")
-    )
+    view = ConsoleView()
+    return view.ask_question(generate_add_or_subtract_question(num_digits))
