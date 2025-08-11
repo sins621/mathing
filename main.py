@@ -1,16 +1,9 @@
-from cli import start_practice
-from db import PracticeRegime, PracticeSession, db
-
-
-def initialize_db():
-    db.connect()
-    db.create_tables([PracticeSession, PracticeRegime], safe=True)
+from controllers.app import AppController
 
 
 def main():
-    initialize_db()
-    start_practice()
-    db.close()
+    app = AppController()
+    app.run()
 
 
 if __name__ == "__main__":
