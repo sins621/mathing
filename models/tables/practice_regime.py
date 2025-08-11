@@ -1,4 +1,6 @@
-from base import AutoField, BaseModel, TextField
+from peewee import AutoField, TextField
+
+from models.tables.base import BaseModel
 
 
 class PracticeRegime(BaseModel):
